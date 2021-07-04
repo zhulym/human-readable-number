@@ -1,5 +1,5 @@
 module.exports = function toReadable(n) {
-    const arrNum1 = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    const arrNum1 = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ', 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
     const arrNum2 = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
     const tensHundreds = +(n.toString().slice(0, 1));
     const once = +(n.toString().slice(-1));
@@ -13,14 +13,17 @@ module.exports = function toReadable(n) {
     }
 
     if (n >= 20 && n < 100) {
-        return `${arrNum2[tensHundreds]} ${arrNum1[once]}`
+        let str = `${arrNum2[tensHundreds]} ${arrNum1[once]}`;
+        return str.substring(0, str.length - 1);
     }
 
     if ((n - (tensHundreds * 100)) < 20 && n >= 100) {
-        return `${arrNum1[tensHundreds]} hundred ${arrNum1[numTo120]}`
+        let str = `${arrNum1[tensHundreds]}hundred ${arrNum1[numTo120]}`;
+        return str.substring(0, str.length - 1);
     }
 
     if (n >= 120 && n < 1000) {
-        return `${arrNum1[tensHundreds]} hundred ${arrNum2[hundredsTens]} ${arrNum1[once]}`
+        let str = `${arrNum1[tensHundreds]}hundred ${arrNum2[hundredsTens]} ${arrNum1[once]}`;
+        return str.substring(0, str.length - 1);
     }
 }
